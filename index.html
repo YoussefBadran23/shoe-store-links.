@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Step-Up</title>
+    
+    <!-- Google Fonts Import: Oswald for titles, Inter for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
     <style>
-        /* * Responsive Background Image Setup
-         * The best image to use here is a 1:1 square image with the main subject in the center.
-        */
+        /* Responsive Background Image Setup */
         body {
-            /* This now correctly points to your uploaded image on GitHub */
             background-image: url('background.png'); 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            background-color: #1c1c1e; /* Fallback color if image fails to load */
+            background-attachment: fixed; /* Prevents background from scrolling */
+            background-color: #1c1c1e;
         }
 
         /* Basic Page Styles */
@@ -23,8 +27,9 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #ffffff; /* White text for contrast against background */
+            /* Use new fonts: Inter for general text */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #ffffff;
         }
 
         /* Main container to center content */
@@ -36,40 +41,49 @@
             min-height: 100vh;
             text-align: center;
             padding: 20px;
-            box-sizing: border-box; /* Ensures padding doesn't affect width */
-            /* Adds a subtle dark overlay to make text more readable */
-            background-color: rgba(0, 0, 0, 0.2); 
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.25); /* Slightly darker overlay for better text contrast */
         }
 
-        /* The main "Step-Up" title */
+        /* The main "Step-Up" title using the new Oswald font */
         h1 {
-            font-size: 3.5em; /* 56px */
+            font-family: 'Oswald', sans-serif;
+            font-size: 4em; /* 64px */
             font-weight: 700;
+            text-transform: uppercase; /* Makes text all caps like VEGA */
             margin: 0;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
         }
         
         /* Container for the date and time */
         .datetime {
-            font-size: 0.9em; /* 14.4px */
-            font-weight: 500;
-            margin-top: 12px;
-            margin-bottom: 24px;
+            font-size: 0.9em;
+            font-weight: 500; /* Medium weight for clarity */
+            margin-top: 10px;
+            margin-bottom: 30px; /* Increased space before links */
             letter-spacing: 0.5px;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
         }
 
-        /* Styling for the plain text links */
+        /* Container for the links to stack them vertically */
+        .links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* UPDATED: Plain text styling for the links with the new font */
         .link {
             color: #ffffff;
-            text-decoration: none; /* Removes underline */
-            font-size: 1.1em; /* 17.6px */
-            font-weight: 600;
-            padding: 10px 0;
-            margin: 4px 0;
+            text-decoration: none;
+            font-size: 1.2em; /* Slightly larger for better presence */
+            font-weight: 600; /* Semibold for impact */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+            padding: 10px 0; /* Vertical spacing */
+            margin: 2px 0;
             transition: opacity 0.2s ease;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
         }
 
         /* Effect for when a user hovers over a link */
@@ -102,15 +116,11 @@
         // JavaScript to display the current date and time
         function updateDateTime() {
             const now = new Date();
-            const date = now.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
-            const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            const date = now.toLocaleDateString('en-GB'); // Day/Month/Year format
+            const time = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
             document.getElementById('datetime-display').textContent = `${date} ${time}`;
         }
-
-        // Update the time when the page loads
         updateDateTime();
-
-        // Optional: Update the time every minute
         setInterval(updateDateTime, 60000);
     </script>
 
