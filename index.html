@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Step-Up</title>
     
-    <!-- Google Fonts Import: Oswald for titles, Inter for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="background.png" as="image">
 
     <style>
         /* Responsive Background Image Setup */
@@ -18,7 +19,7 @@
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed; /* Prevents background from scrolling */
-            background-color: #1c1c1e;
+            background-color: #1c1c1e; /* Fallback color while image loads */
         }
 
         /* Basic Page Styles */
@@ -27,7 +28,6 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            /* Use new fonts: Inter for general text */
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: #ffffff;
         }
@@ -45,12 +45,12 @@
             background-color: rgba(0, 0, 0, 0.25); /* Slightly darker overlay for better text contrast */
         }
 
-        /* The main "Step-Up" title using the new Oswald font */
+        /* The main "Step-Up" title */
         h1 {
             font-family: 'Oswald', sans-serif;
             font-size: 4em; /* 64px */
             font-weight: 700;
-            text-transform: uppercase; /* Makes text all caps like VEGA */
+            text-transform: uppercase;
             margin: 0;
             letter-spacing: 2px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
@@ -66,7 +66,7 @@
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
         }
 
-        /* Container for the links to stack them vertically */
+        /* Container for the links */
         .links {
             display: flex;
             flex-direction: column;
@@ -74,11 +74,11 @@
             width: 100%;
         }
 
-        /* UPDATED: Plain text styling for the links with the new font */
+        /* Plain text styling for the links */
         .link {
             color: #ffffff;
             text-decoration: none;
-            font-size: 1.2em; /* Slightly larger for better presence */
+            font-size: 1.2em;
             font-weight: 600; /* Semibold for impact */
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Shadow for readability */
             padding: 10px 0; /* Vertical spacing */
@@ -86,11 +86,10 @@
             transition: opacity 0.2s ease;
         }
 
-        /* Effect for when a user hovers over a link */
+        /* Hover effect for links */
         .link:hover {
-            opacity: 0.7; /* Slightly fades the link on hover */
+            opacity: 0.7;
         }
-
     </style>
 </head>
 <body>
@@ -100,13 +99,12 @@
         <h1>Step-Up</h1>
         
         <div class="datetime" id="datetime-display">
-            <!-- Date and time will be inserted here by JavaScript -->
-        </div>
+            </div>
 
         <div class="links">
-            <a href="https://www.instagram.com/step.up27?igsh=azZpMmpiaWVrcDdl&utm_source=qr" class="link">Instagram</a>
-            <a href="https://www.facebook.com/share/1HW6cf8pBX/?mibextid=wwXIfr" class="link">Facebook</a>
-            <a href="https://www.tiktok.com/@step_up62?_t=ZS-8xe82dTsUv1&_r=1" class="link">TikTok</a>
+            <a href="https://www.instagram.com/step_uphub?igsh=MTh6YTE0MjBsNW04Mg==" class="link">Instagram</a>
+            <a href="https://www.facebook.com/share/16bxBfnspd/?mibextid=wwXIfr" class="link">Facebook</a>
+            <a href="https://www.tiktok.com/@shopstepup?_t=ZS-8xvAgJcd7yR&_r=1" class="link">TikTok</a>
             <a href="#" class="link">Website (Coming Soon)</a>
         </div>
 
@@ -120,7 +118,9 @@
             const time = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
             document.getElementById('datetime-display').textContent = `${date} ${time}`;
         }
+        // Run once on load
         updateDateTime();
+        // Update every minute
         setInterval(updateDateTime, 60000);
     </script>
 
