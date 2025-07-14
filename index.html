@@ -9,17 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
 
-    <link rel="preload" href="background.png" as="image">
-
     <style>
-        /* Responsive Background Image Setup */
-        body {
-            background-image: url('background.png'); 
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Prevents background from scrolling */
-            background-color: #1c1c1e; /* Fallback color while image loads */
+        /* Video Background Styling */
+        #background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Places the video behind all other content */
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover; /* Ensures the video covers the screen without distortion */
         }
 
         /* Basic Page Styles */
@@ -32,6 +34,10 @@
             color: #ffffff;
         }
 
+        body {
+            background-color: #1c1c1e; /* Fallback color if the video fails to load */
+        }
+
         /* Main container to center content */
         .container {
             display: flex;
@@ -42,7 +48,7 @@
             text-align: center;
             padding: 20px;
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.25); /* Slightly darker overlay for better text contrast */
+            background-color: rgba(0, 0, 0, 0.25); /* Slightly darker overlay for better text contrast over the video */
         }
 
         /* The main "Step-Up" title */
@@ -93,6 +99,11 @@
     </style>
 </head>
 <body>
+
+    <video autoplay muted loop playsinline id="background-video">
+        <source src="WhatsApp Video 2025-07-14 at 6.37.31 AM.mp4" type="video/mp4">
+        Your browser does not support the video tag. This is fallback text.
+    </video>
 
     <div class="container">
         
